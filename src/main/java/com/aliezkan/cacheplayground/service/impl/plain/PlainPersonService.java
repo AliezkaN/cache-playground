@@ -1,6 +1,7 @@
 package com.aliezkan.cacheplayground.service.impl.plain;
 
 import com.aliezkan.cacheplayground.domain.Person;
+import com.aliezkan.cacheplayground.exceptions.PersonNotFoundException;
 import com.aliezkan.cacheplayground.repository.PersonRepository;
 import com.aliezkan.cacheplayground.selma.PlaygroundSelma;
 import com.aliezkan.cacheplayground.service.PersonService;
@@ -15,6 +16,6 @@ public class PlainPersonService implements PersonService {
     public Person getPersonById(Long bookId) {
         return repository.findById(bookId)
                 .map(selma::toDomain)
-                .orElseThrow(RuntimeException::new);
+                .orElseThrow(() -> new PersonNotFoundException(bookId));
     }
 }
