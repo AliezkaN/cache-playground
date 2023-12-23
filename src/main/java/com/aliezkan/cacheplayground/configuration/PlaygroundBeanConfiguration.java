@@ -25,11 +25,12 @@ public class PlaygroundBeanConfiguration {
     @Bean
     @ConditionalOnProperty(name = "playground.cache.enabled", havingValue = "true")
     public CaffeineCache caffeineCache(PlaygroundProperties playgroundProperties) {
-        log.info("Configuring Cache with properties {}...", playgroundProperties.getCache());
+        PlaygroundProperties.Cache cacheProperties = playgroundProperties.getCache();
+        log.info("Configuring Cache with properties {}...", cacheProperties);
         return new CaffeineCache("caches.person-info", Caffeine.newBuilder()
-                .initialCapacity(playgroundProperties.getCache().getInitialSize())
-                .maximumSize(playgroundProperties.getCache().getMaxSize())
-                .expireAfterWrite(playgroundProperties.getCache().getExpireTime(), playgroundProperties.getCache().getTimeUnit())
+                .initialCapacity(cacheProperties.getInitialSize())
+                .maximumSize(cacheProperties.getMaxSize())
+                .expireAfterWrite(cacheProperties.getExpireTime(), cacheProperties.getTimeUnit())
                 .build());
     }
 
