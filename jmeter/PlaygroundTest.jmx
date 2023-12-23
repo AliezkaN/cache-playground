@@ -173,7 +173,7 @@ if (code in allowedCodes &amp;&amp; time &gt; Integer.parseInt(vars.get(&quot;rt
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
             </collectionProp>
-            <stringProp name="TestPlan.comments">Accept: application/json (для отримання json-відповіді)
+            <stringProp name="TestPlan.comments">Accept: application/json
 Content-Type: application/json</stringProp>
           </HeaderManager>
           <hashTree/>
