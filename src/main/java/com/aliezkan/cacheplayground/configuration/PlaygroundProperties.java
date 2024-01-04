@@ -19,7 +19,7 @@ public class PlaygroundProperties {
 
     @Data
     public static class Cache {
-        private boolean enabled = true;
+        private boolean enabled = false;
         @Min(1) private Integer initialSize = 100;
         @Min(1) private Integer maxSize = 1000;
         @Min(1) private Integer expireTime = 60;
